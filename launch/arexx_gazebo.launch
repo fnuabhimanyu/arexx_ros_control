@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<launch>
+<!-- Load the TortoiseBot URDF model into the parameter server -->
+
+<param name="robot_description" textfile="$(find arexx_sim)/urdf/arexx.urdf" />
+
+<rosparam file="$(find arexx_sim)/config/arexx.yaml" command="load" />
+
+<!-- Start Gazebo with an empty world -->
+<include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+<!-- Spawn a TortoiseBot in Gazebo, taking the description from the
+parameter server -->
+
+<node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
+      args="-param robot_description -urdf -model arexx" />
+<node name="robot_state_publisher" pkg="robot_state_publisher"
+        type="robot_state_publisher"/>
+
+<node name="controller_spawner" pkg="controller_manager" type="spawner" respawn="false"
+        output="screen" args="--namespace=/arexx
+                              joint_state_controller
+                              orientation_position_controller
+                              shoulder_position_controller
+                              ellbow_position_controller
+                              wrist_bend_position_controller
+                              wrist_rotate_position_controller
+                              gripper_position_controller
+                              --shutdown-timeout 3">
+
+</node>
+</launch>
+

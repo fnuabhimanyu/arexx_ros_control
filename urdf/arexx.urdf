@@ -1,0 +1,423 @@
+<robot name="arexx">
+
+  <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/arexx</robotNamespace>
+        </plugin>
+  </gazebo>
+  
+  <link name="world" />
+
+  <link name="base_link">
+  	<visual>
+      <geometry>
+        <cylinder length="0.065" radius="0.075"/>
+      </geometry>
+	  <origin xyz="0 0 0.0325"/>	
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder length="0.065" radius="0.075"/>
+      </geometry>
+	  <origin xyz="0 0 0.0325"/>	
+    </collision>
+    <inertial>
+      <mass value="1"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <gazebo reference="base_link">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <material>Gazebo/Black</material>
+  </gazebo>
+
+  <link name="torso">
+  	<visual>
+      <geometry>
+        <box size="0.040 0.070 0.030"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 .8 1"/>
+      </material>
+	  <origin xyz="0 0 0.02"/>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="0.040 0.070 0.030"/>
+      </geometry>
+	  <origin xyz="0 0 0.02"/>
+    </collision>
+    <inertial>
+      <mass value="0.05"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <gazebo reference="torso">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <material>Gazebo/Red</material>-
+  </gazebo>
+
+  <link name="upper_arm">
+  	<visual>
+      <geometry>
+        <box size="0.1 0.02 0.065"/>
+      </geometry>
+	  <origin xyz="0.0385 0 0"/>
+    </visual>
+  	<collision>
+      <geometry>
+        <box size="0.1 0.02 0.065"/>
+      </geometry>
+	  <origin xyz="0.0385 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <gazebo reference="upper_arm">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <material>Gazebo/Blue</material>
+  </gazebo>
+
+  <link name="lower_arm">
+  	<visual>
+      <geometry>
+        <box size="0.075 0.018 0.035"/>
+      </geometry>
+      <material name="blue"/>
+      <origin xyz="0.025 0 0"/>
+    </visual>
+  	<collision>
+      <geometry>
+        <box size="0.075 0.018 0.035"/>
+      </geometry>
+      <origin xyz="0.025 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.05"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <gazebo reference="lower_arm">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+  <link name="upper_hand">
+  	<visual>
+      <geometry>
+        <box size="0.06 0.02 0.05"/>
+      </geometry>
+      <origin xyz="0.025 0 0"/>
+    </visual>
+  	<collision>
+      <geometry>
+        <box size="0.06 0.02 0.05"/>
+      </geometry>
+      <origin xyz="0.025 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <gazebo reference="upper_hand">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <material>Gazebo/Blue</material>
+    </gazebo>
+
+  <link name="lower_hand">
+  	<visual>
+      <geometry>
+        <box size="0.04 0.028 0.023"/>
+      </geometry>
+      <material name="blue"/>
+      <origin xyz="0.02 0 0"/>
+    </visual>
+  	<collision>
+      <geometry>
+        <box size="0.04 0.028 0.023"/>
+      </geometry>
+      <origin xyz="0.02 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <gazebo reference="lower_hand">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <material>Gazebo/Red</material>-->
+    </gazebo>
+
+  <link name="lower_hand_extend">
+  	<visual>
+      <geometry>
+        <box size="0.07 0.028 0.002"/>
+      </geometry>
+      <material name="blue"/>
+	  <origin xyz="0.035 0 0"/>
+    </visual>
+  	<collision>
+      <geometry>
+        <box size="0.07 0.028 0.002"/>
+      </geometry>
+	  <origin xyz="0.035 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <gazebo reference="lower_hand_extend">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <material>Gazebo/Blue</material>
+  </gazebo>
+
+
+  <link name="finger_base">
+  	<visual>
+      <geometry>
+        <box size="0.025 0.05 0.025"/>
+      </geometry>
+      <origin xyz="0.00 0 0"/>
+    </visual>
+  	<collision>
+      <geometry>
+        <box size="0.025 0.05 0.025"/>
+      </geometry>
+      <origin xyz="0.00 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.002"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <gazebo reference="finger_base">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+
+  <link name="finger_extend1">
+  	<visual>
+      <geometry>
+        <box size="0.027 0.028 0.002"/>
+      </geometry>
+      <origin xyz="0.0135 0 0"/>
+    </visual>
+  	<collision>
+      <geometry>
+        <box size="0.027 0.028 0.002"/>
+      </geometry>
+      <origin xyz="0.0135 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <gazebo reference="finger_extend1">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <material>Gazebo/Blue</material>
+  </gazebo>
+
+
+  <link name="finger_extend2">
+  	<visual>
+      <geometry>
+        <box size="0.015 0.028 0.002"/>
+      </geometry>
+      <origin xyz="0.0075 0 0"/>
+    </visual>
+  	<collision>
+      <geometry>
+        <box size="0.015 0.028 0.002"/>
+      </geometry>
+      <origin xyz="0.0075 0 0"/>
+    </collision>
+    <inertial>
+      <mass value="0.001"/>
+      <inertia ixx="1.0" ixy="0.0" ixz="0.0" iyy="1.0" iyz="0.0" izz="1.0"/>
+    </inertial>
+  </link>
+  <gazebo reference="finger_extend2">
+        <kp>1000.0</kp>
+        <kd>1000.0</kd>
+        <mu1>0.5</mu1>
+        <mu2>0.5</mu2>
+        <material>Gazebo/Red</material>
+    </gazebo>
+
+
+
+  <joint name="orientation" type="revolute">
+    <parent link="base_link"/>
+    <child link="torso"/>
+	<origin xyz="0 0 0.077"/>
+	<axis xyz="0 0 1"/>
+    <limit effort="1000.0" lower="-1.57" upper="1.57" velocity="0.5"/>
+  </joint>
+
+  <joint name="shoulder" type="revolute">
+    <parent link="torso"/>
+    <child link="upper_arm"/>
+	<origin xyz="0 0 0.02" rpy="0 -1.57 0" />
+	<axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="-1.57" upper="1.57" velocity="0.5"/>
+  </joint>
+
+  <joint name="ellbow" type="revolute">
+    <parent link="upper_arm"/>
+    <child link="lower_arm"/>
+	<origin xyz="0.076 0 0" rpy="0 0 0" />
+	<axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="-1.57" upper="1.57" velocity="0.5"/>
+  </joint>
+
+  <joint name="wrist_bend" type="revolute">
+    <parent link="lower_arm"/>
+    <child link="upper_hand"/>
+	<origin xyz="0.048 0 0" rpy="0 0 0" />
+	<axis xyz="0 0 1" />
+    <limit effort="1000.0" lower="-1.57" upper="1.57" velocity="0.5"/>
+  </joint>
+
+  <joint name="wrist_rotate" type="revolute">
+    <parent link="upper_hand"/>
+    <child link="lower_hand"/>
+	<origin xyz="0.050 0 0" rpy="1.57 0 0" />
+	<axis xyz="1 0 0" />
+    <limit effort="1000.0" lower="-1.57" upper="1.57" velocity="0.5"/>
+  </joint>
+
+  <joint name="hand" type="fixed">
+    <parent link="lower_hand"/>
+    <child link="lower_hand_extend"/>
+	<origin xyz="0 0 -0.012" />
+  </joint>
+
+  <joint name="gripper" type="revolute">
+    <parent link="lower_hand"/>
+    <child link="finger_base"/>
+	<origin xyz="0.032 0 0.005" rpy="0 0 0" />
+	<axis xyz="0 1 0" />
+    <limit effort="1000.0" lower="-1" upper="0" velocity="0.5"/>
+  </joint>
+
+  <joint name="finger1" type="fixed">
+    <parent link="finger_base"/>
+    <child link="finger_extend1"/>
+	<origin xyz="0.015 0 0.01" rpy="0 0.52 0"/>
+  </joint>
+
+  <joint name="finger2" type="fixed">
+    <parent link="finger_extend1"/>
+    <child link="finger_extend2"/>
+	<origin xyz="0.027 0 0" rpy="0 1 0"/>
+  </joint>
+  
+  <joint name="fixeIt" type="fixed">
+        <parent link="world" />
+        <child link="base_link"/>
+    </joint>
+
+ <transmission name="orientation_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="orientation">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="orientationMotor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <transmission name="shoulder_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="shoulder">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="shoulderMotor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <transmission name="ellbow_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="ellbow">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="ellbowMotor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+
+    </transmission>
+    <transmission name="wrist_bend_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="wrist_bend">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="wrist_bendMotor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+    <transmission name="wrist_rotate_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="wrist_rotate">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="wrist_rotateMotor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+  
+    <transmission name="gripper_trans">
+      <type>transmission_interface/SimpleTransmission</type>
+      <joint name="gripper">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+      </joint>
+      <actuator name="gripperMotor">
+        <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        <mechanicalReduction>1</mechanicalReduction>
+      </actuator>
+    </transmission>
+
+
+</robot>
+
+

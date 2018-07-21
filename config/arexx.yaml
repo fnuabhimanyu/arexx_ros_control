@@ -1,0 +1,37 @@
+arexx:
+  # Publish all joint states -----------------------------------
+  # Creates the /joint_states topic necessary in ROS
+  joint_state_controller:
+    type: joint_state_controller/JointStateController
+    publish_rate: 50
+
+  # Effort Controllers ---------------------------------------
+  orientation_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: orientation
+    pid: {p: 5.0, i: 0.0, d: 0.1}
+    
+  shoulder_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: shoulder
+    pid: {p: 5.0, i: 0.0, d: 0.1}
+   
+  ellbow_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: ellbow
+    pid: {p: 5.0, i: 0.0, d: 0.1}
+
+  wrist_bend_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: wrist_bend
+    pid: {p: 5.0, i: 0.0, d: 0.1}
+    
+  wrist_rotate_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: wrist_rotate
+    pid: {p: 5.0, i: 0.0, d: 0.1}
+    
+  gripper_position_controller:
+    type: effort_controllers/JointPositionController
+    joint: gripper
+    pid: {p: 5.0, i: 0.0, d: 0.1}
