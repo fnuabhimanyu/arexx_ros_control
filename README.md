@@ -9,3 +9,4 @@ It has following files:
 4.launch/arexx_gazebo.launch: For spawning in Gazebo
 5. scripts/test.py : Simple positional controller
 
+Author : Abhimanyu | abhimanyusingh8173@gmail.com
